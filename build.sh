@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-COMP_DIR='components'
-if [ -d $COMP_DIR ]; then
-    rm -rf $COMP_DIR
+TLS_DIR="tls"
+EXT_DIR="$TLS_DIR/ext"
+if [ -d $EXT_DIR ]; then
+    rm -rf $EXT_DIR
 fi
-mkdir $COMP_DIR
-pushd $COMP_DIR
+mkdir $EXT_DIR
+pushd $EXT_DIR
 
 
 # nothing special about this commit (hash)
@@ -52,4 +53,4 @@ make
 popd
 
 
-popd # $COMP_DIR
+popd # $EXT_DIR
