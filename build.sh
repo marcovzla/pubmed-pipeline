@@ -27,3 +27,18 @@ MCCCJ_URL="http://bllip.cs.brown.edu/download"
 curl -O "$MCCCJ_URL/$MCCCJ_FILENAME"
 # unpack model
 tar xzvf $MCCCJ_FILENAME
+
+
+# nothing special about this commit (hash)
+# it was the most recent when I wrote this script
+GENIASS_HASH="d9cd8e5afe73e0f7084b0fce0f4dc219c9196e33"
+GENIASS_FILENAME="${GENIASS_HASH}.tar.gz"
+GENIASS_URL="https://github.com/marcovzla/geniass"
+GENIASS_BASE="geniass"
+
+curl -L -O "$GENIASS_URL/archive/$GENIASS_FILENAME"
+tar xzvf $GENIASS_FILENAME
+ln -s "${GENIASS_BASE}-${GENIASS_HASH}" $GENIASS_BASE
+pushd $GENIASS_BASE
+make
+popd
