@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # nothing special about this commit (hash)
 # it was the most recent when I wrote this script
 BLLIP_HASH="0bc8b2c8cfe5aa040677108d09b48ffe501852b3"
@@ -17,3 +18,12 @@ ln -s "${BLLIP_BASE}-${BLLIP_HASH}" $BLLIP_BASE
 pushd $BLLIP_BASE
 make
 popd
+
+
+MCCCJ_FILENAME="bioparsingmodel-rel1.tar.gz"
+MCCCJ_URL="http://bllip.cs.brown.edu/download"
+
+# download model
+curl -O "$MCCCJ_URL/$MCCCJ_FILENAME"
+# unpack model
+tar xzvf $MCCCJ_FILENAME
