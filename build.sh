@@ -1,6 +1,14 @@
 #!/bin/bash
 
 
+COMP_DIR='components'
+if [ -d $COMP_DIR ]; then
+    rm -rf $COMP_DIR
+fi
+mkdir $COMP_DIR
+pushd $COMP_DIR
+
+
 # nothing special about this commit (hash)
 # it was the most recent when I wrote this script
 BLLIP_HASH="0bc8b2c8cfe5aa040677108d09b48ffe501852b3"
@@ -42,3 +50,6 @@ ln -s "${GENIASS_BASE}-${GENIASS_HASH}" $GENIASS_BASE
 pushd $GENIASS_BASE
 make
 popd
+
+
+popd # $COMP_DIR

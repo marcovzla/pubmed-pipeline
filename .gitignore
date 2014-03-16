@@ -1,6 +1,2 @@
 *.tar.gz
-biomodel
-bllip-parser
-bllip-parser-*
-geniass
-geniass-*
+components/
