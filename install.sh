@@ -3,12 +3,21 @@
 
 TLS_DIR="tls"
 EXT_DIR="$TLS_DIR/ext"
+
+# start from scratch
 if [ -d $EXT_DIR ]; then
     rm -rf $EXT_DIR
 fi
 mkdir $EXT_DIR
+
+# get into EXT_DIR
 pushd $EXT_DIR
 
+
+
+
+
+# install charniak parser
 
 # nothing special about this commit (hash)
 # it was the most recent when I wrote this script
@@ -29,6 +38,11 @@ make
 popd
 
 
+
+
+
+# install biomodel for charniak parser
+
 MCCCJ_FILENAME="bioparsingmodel-rel1.tar.gz"
 MCCCJ_URL="http://bllip.cs.brown.edu/download"
 
@@ -37,6 +51,11 @@ curl -O "$MCCCJ_URL/$MCCCJ_FILENAME"
 # unpack model
 tar xzvf $MCCCJ_FILENAME
 
+
+
+
+
+# install genia sentence splitter
 
 # nothing special about this commit (hash)
 # it was the most recent when I wrote this script
@@ -51,6 +70,23 @@ ln -s "${GENIASS_BASE}-${GENIASS_HASH}" $GENIASS_BASE
 pushd $GENIASS_BASE
 make
 popd
+
+
+
+
+
+# install stanford parser
+
+STANFORD_FILENAME="stanford-parser-full-2014-01-04.zip"
+STANFORD_URL="http://www-nlp.stanford.edu/software"
+STANFORD_BASE="stanford-parser"
+
+curl -O "$STANFORD_URL/$STANFORD_FILENAME"
+unzip $STANFORD_FILENAME
+ln -s ${STANFORD_FILENAME%.*} $STANFORD_BASE
+
+
+
 
 
 popd # $EXT_DIR
