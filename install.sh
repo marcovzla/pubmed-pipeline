@@ -89,4 +89,21 @@ ln -s ${STANFORD_FILENAME%.*} $STANFORD_BASE
 
 
 
+# install genia tagger
+GENIA_HASH='dee879e12ff5bc991eb9002ce467348226b08df2'
+GENIA_FILENAME="${GENIA_HASH}.tar.gz"
+GENIA_URL="https://github.com/marcovzla/geniatagger"
+GENIA_BASE="geniatagger"
+
+curl -L -O "$GENIA_URL/archive/$GENIA_FILENAME"
+tar xzvf $GENIA_FILENAME
+ln -s "${GENIA_BASE}-${GENIA_HASH}" $GENIA_BASE
+pushd $GENIA_BASE
+make
+popd
+
+
+
+
+
 popd # $EXT_DIR
