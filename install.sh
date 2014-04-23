@@ -106,4 +106,18 @@ popd
 
 
 
+# install nxml2txt
+NXML_HASH='27f02baec3ca407a162df5db8e2dd398255f50a2'
+NXML_FILENAME="${NXML_HASH}.tar.gz"
+NXML_URL='https://github.com/marcovzla/nxml2txt'
+NXML_BASE='nxml2txt'
+
+curl -L -O "$NXML_URL/archive/$NXML_FILENAME"
+tar xzvf $NXML_FILENAME
+ln -s "${NXML_BASE}-${NXML_HASH}" $NXML_BASE
+
+
+
+
+
 popd # $EXT_DIR
