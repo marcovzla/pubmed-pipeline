@@ -47,6 +47,8 @@ def extract_abstract(text, standoff):
 if __name__ == '__main__':
     textfn = sys.argv[1]
     sofn = sys.argv[2]
+    abstractfn = sys.argv[3]
+    bodyfn = sys.argv[4]
 
     with open(textfn) as f:
         text = f.read()
@@ -54,4 +56,14 @@ if __name__ == '__main__':
     with open(sofn) as f:
         standoff = f.read()
 
-    print extract_body(text, standoff)
+    try:
+        abstract = extract_abstract(text, standoff)
+        body = extract_body(text, standoff)
+    except StopIteration:
+        sys.exit('no abstract or body')
+
+    with open(abstractfn, 'w') as f:
+        f.write(abstract)
+
+    with open(bodyfn, 'w') as f:
+        f.write(body)
