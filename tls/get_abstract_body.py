@@ -58,12 +58,14 @@ if __name__ == '__main__':
 
     try:
         abstract = extract_abstract(text, standoff)
-        body = extract_body(text, standoff)
+        with open(abstractfn, 'w') as f:
+            f.write(abstract)
     except StopIteration:
-        sys.exit('no abstract or body')
+        sys.exit('no abstract')
 
-    with open(abstractfn, 'w') as f:
-        f.write(abstract)
-
-    with open(bodyfn, 'w') as f:
-        f.write(body)
+    try:
+        body = extract_body(text, standoff)
+        with open(bodyfn, 'w') as f:
+            f.write(body)
+    except StopIteration:
+        sys.exit('no body')
