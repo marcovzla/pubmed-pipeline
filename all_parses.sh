@@ -3,7 +3,7 @@
 TXT_DIR="$1"
 OUT_DIR="$2"
 
-N_PROCS=5
+N_PROCS=4
 
 [ ! -d $OUT_DIR ] && mkdir -p $OUT_DIR
 
