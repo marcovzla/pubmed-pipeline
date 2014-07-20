@@ -29,7 +29,9 @@ def read_mapping(f, fn="mapping data"):
         assert m, "Format error in %s line %s: '%s'" % (fn, i+1, l.replace("\n","").encode("utf-8"))
         c, r = m.groups()
 
-        c = unichr(int(c, 16))
+        # work with python narrow build
+        #c = unichr(int(c, 16))
+        c = (r'\U' + c.zfill(8)).decode('unicode-escape')
         assert c not in mapping or mapping[c] == r, "ERROR: conflicting mappings for %.4X: '%s' and '%s'" % (ord(c), mapping[c], r)
 
         # exception: literal '\n' maps to newline
